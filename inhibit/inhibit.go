@@ -95,6 +95,7 @@ func (ih *Inhibitor) Run() {
 	runCtx, runCancel := context.WithCancel(ctx)
 
 	for _, rule := range ih.rules {
+		rule := rule
 		go rule.scache.Run(runCtx, 15*time.Minute)
 	}
 
